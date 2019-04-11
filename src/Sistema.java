@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Sistema {
 
     Bar bar;
+    int opc;
 
     public Sistema(Bar bar) {
         this.bar = bar;
@@ -11,7 +12,8 @@ public class Sistema {
 
     public void showMenu() throws IOException {
         bar.carregarSocios();
-
+        Scanner ler = new Scanner(System.in);
+        do {
         System.out.println("--------------------------");
         System.out.println("MENU PRINCIPAL");
         System.out.println("1 - Registrar entrada");
@@ -22,28 +24,28 @@ public class Sistema {
 
         System.out.print("\nDigite a opção: ");
 
-        Scanner ler = new Scanner(System.in);
-        int opc = ler.nextInt();
-        do {
+
+        opc = ler.nextInt();
+
 
             switch (opc) {
 
                 case 1:
                     registrarEntrada();
-                    showMenu();
+
                     break;
                 case 2:
                     registrarSaida();
-                    showMenu();
+
                     break;
                 case 3:
                     consultas();
-                    showMenu();
+
                     break;
 
                 case 4:
                     cadastrarSocio();
-                    showMenu();
+
                     break;
                 case 0:
                     System.out.println("você saiu!");
@@ -105,15 +107,16 @@ public class Sistema {
                     consultas();
                     break;
                 case 3:
-                    bar.consultarQtdPessoas();
+                    System.out.println("Quatidade de pessoas: "+bar.consultarQtdPessoas());
                     consultas();
                     break;
                 case 4:
-                    bar.ConsultarPercentualGenero();
+                    System.out.println(bar.ConsultarPercentualGenero());
                     consultas();
                     break;
                 case 5:
-                    bar.consultarSociosENaoSocios();
+
+                    System.out.println(bar.consultarSociosENaoSocios());
                     consultas();
                     break;
                 case 0:
@@ -142,7 +145,7 @@ public class Sistema {
         Cliente c = new Cliente(CPF,nome,genero,idade);
         bar.adicionar(c);
         System.out.println("Cliente registrado!");
-        ler.close();
+        //ler.close();
     }
 
     public void registrarSaida(){
@@ -150,6 +153,6 @@ public class Sistema {
         System.out.print("Informe CPF: ");
         String CPF = ler.nextLine();
         bar.remover(CPF);
-        ler.close();
+        //ler.close();
     }
 }

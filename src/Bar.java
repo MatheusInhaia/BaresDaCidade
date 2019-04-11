@@ -89,14 +89,14 @@ public class Bar {
         int feminino = 0 ;
 
         for(Cliente c : clientes){
-            if(c.getGenero().equalsIgnoreCase("Feminino")){
+            if(c.getGenero().contains("f")){
                 feminino++;
             }else{
                 masculino++;
             }
         }
 
-        s = "Total de pessoas : " + consultarQtdPessoas() + " "+ "Percentual de publico masculino: " + ((consultarQtdPessoas()/masculino)*100)+"%"+" Feminino: "+ ((consultarQtdPessoas()/feminino)*100)+"%.";
+        s = "Total de pessoas : " + consultarQtdPessoas() + " "+ "Percentual de publico masculino: " + ((masculino/consultarQtdPessoas())*100)+"%"+" Feminino: "+ ((feminino/consultarQtdPessoas())*100)+"%.";
 
         return s;
     }
@@ -151,20 +151,19 @@ public class Bar {
     public void carregarSocios()throws IOException{
         Path path = Paths.get("src/Socios.txt");
 
-        String cpf, nome, genero;
-        int idade, numero;
+        String cpf, nome, genero,idade,numero;
+
 
         try (Scanner sc = new Scanner(Files.newBufferedReader(path, Charset.defaultCharset()))) {
-            sc.useDelimiter(";|\n");
+            sc.useDelimiter(";");
 
             while (sc.hasNext()) {
                 cpf= sc.next();
                 nome = sc.next();
                 genero = sc.next();
-                idade = sc.nextInt();
-                numero = sc.nextInt();
-
-                Socio s = new Socio(cpf,nome,genero,idade,numero);
+                idade = sc.next();
+                numero = sc.next();
+                Socio s = new Socio(cpf,nome,genero,Integer.parseInt(idade),Integer.parseInt(numero));
                 registrarSocio(s);
             }
 
