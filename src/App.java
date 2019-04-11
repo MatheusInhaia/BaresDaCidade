@@ -4,7 +4,7 @@ public class App {
     public static void main(String args[])throws IOException {
         Bar bar = new Bar();
         Sistema sistema = new Sistema(bar);
-
+        bar.carregarSocios();
         sistema.showMenu();
     }
 }

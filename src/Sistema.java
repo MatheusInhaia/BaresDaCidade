@@ -39,6 +39,8 @@ public class Sistema {
                     break;
                 case 0:
                     System.out.println("você saiu!");
+                    bar.salvarPublicoDia();
+                    bar.salvarSocios();
                     break;
                 default:
                     break;
