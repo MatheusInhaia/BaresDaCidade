@@ -1,16 +1,16 @@
+import java.util.Date;
+
 public class Cliente {
     private String CPF;
     private String nome;
     private String genero;
-    private boolean socio;
-    private int numeroSocio;
+    private int idade; // sem tempo pra fazer com Date, para pegar a data de nascimento e converter para pegar a idade corrente no dia de hoje
 
-    public Cliente(String CPF, String nome, String genero) {
+    public Cliente(String CPF, String nome, String genero, int idade) {
         this.CPF = CPF;
         this.nome = nome;
         this.genero = genero;
-        this.socio = false;
-        this.numeroSocio = 0;
+        this.idade = idade;
     }
 
     public String getCPF() {
@@ -25,9 +25,13 @@ public class Cliente {
         return genero;
     }
 
+    public int getIdade() {
+        return idade;
+    }
+
     @Override
     public String toString() {
-        String src ="Cliente: "+ getNome() + " CPF: " + getCPF() + " Genero: " + getGenero() + " Idade: " ;
+        String src ="Cliente: "+ getNome() + " CPF: " + getCPF() + " Genero: " + getGenero() + " Idade: " + getIdade() ;
         return src;
     }
 }
