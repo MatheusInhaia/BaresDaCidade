@@ -10,6 +10,8 @@ public class Sistema {
     }
 
     public void showMenu() throws IOException {
+        bar.carregarSocios();
+
         System.out.println("--------------------------");
         System.out.println("MENU PRINCIPAL");
         System.out.println("1 - Registrar entrada");
@@ -19,34 +21,42 @@ public class Sistema {
         System.out.println("0 - Sair");
 
         System.out.print("\nDigite a opção: ");
+
         Scanner ler = new Scanner(System.in);
         int opc = ler.nextInt();
         do {
+
             switch (opc) {
 
                 case 1:
                     registrarEntrada();
+                    showMenu();
                     break;
                 case 2:
                     registrarSaida();
+                    showMenu();
                     break;
                 case 3:
                     consultas();
+                    showMenu();
                     break;
 
                 case 4:
                     cadastrarSocio();
+                    showMenu();
                     break;
                 case 0:
                     System.out.println("você saiu!");
                     bar.salvarPublicoDia();
                     bar.salvarSocios();
+                    ler.close();
                     break;
                 default:
+                    showMenu();
                     break;
 
             }
-        }while(opc==0); // botar como default o show menu;
+        }while(opc!=0); // botar como default o show menu;
 
         ler.close();
     }
@@ -68,6 +78,7 @@ public class Sistema {
 
         bar.registrarSocio(s);
         System.out.println("Socio registrado!");
+        ler.close();
     }
 
     public void consultas() throws IOException{
@@ -85,26 +96,31 @@ public class Sistema {
 
                 case 1:
                     bar.consultarPublico();
+                    consultas();
                     break;
                 case 2:
                     System.out.print("Informe CPF: ");
                     String cpf = ler.next();
                     bar.consultarCPF(cpf);
+                    consultas();
                     break;
                 case 3:
                     bar.consultarQtdPessoas();
+                    consultas();
                     break;
                 case 4:
                     bar.ConsultarPercentualGenero();
+                    consultas();
                     break;
                 case 5:
                     bar.consultarSociosENaoSocios();
+                    consultas();
                     break;
                 case 0:
                     showMenu();
                     break;
                 default:
-
+                    showMenu();
                     break;
 
             }
@@ -126,6 +142,7 @@ public class Sistema {
         Cliente c = new Cliente(CPF,nome,genero,idade);
         bar.adicionar(c);
         System.out.println("Cliente registrado!");
+        ler.close();
     }
 
     public void registrarSaida(){
@@ -133,5 +150,6 @@ public class Sistema {
         System.out.print("Informe CPF: ");
         String CPF = ler.nextLine();
         bar.remover(CPF);
+        ler.close();
     }
 }

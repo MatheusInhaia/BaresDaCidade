@@ -4,11 +4,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Bar {
     private ArrayList<Cliente> clientes;
     private List<Socio> socios;
+
 
 
     public Bar() {
@@ -100,7 +102,7 @@ public class Bar {
     }
 
     public void salvarPublicoDia() throws IOException {
-        File f = new File("src/"+LocalDate.now()+".txt");
+        File f = new File("src/"+ LocalDate.now()+".txt");
         FileWriter fw = new FileWriter(f);
         PrintWriter pw = new PrintWriter(fw);
 
@@ -147,7 +149,7 @@ public class Bar {
     }
 
     public void carregarSocios()throws IOException{
-        Path path = Paths.get("src/CDs.txt");
+        Path path = Paths.get("src/Socios.txt");
 
         String cpf, nome, genero;
         int idade, numero;
