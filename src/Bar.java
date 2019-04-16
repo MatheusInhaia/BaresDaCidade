@@ -4,7 +4,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class Bar {
@@ -155,7 +154,7 @@ public class Bar {
 
 
         try (Scanner sc = new Scanner(Files.newBufferedReader(path, Charset.defaultCharset()))) {
-            sc.useDelimiter(";");
+            sc.useDelimiter(";\n");
 
             while (sc.hasNext()) {
                 cpf= sc.next();
