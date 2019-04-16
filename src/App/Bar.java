@@ -19,6 +19,14 @@ public class Bar {
         this.socios = new ArrayList<>();
     }
 
+    public ArrayList<Cliente> getClientes() {
+        return new ArrayList<>(clientes);
+    }
+
+    public List<Socio> getSocios() {
+        return new ArrayList<>(socios);
+    }
+
     public String consultarSociosENaoSocios() {
         String s;
         int socios = 0;
